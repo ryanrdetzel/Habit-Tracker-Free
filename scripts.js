@@ -151,7 +151,7 @@ function toggleHabit(habitIndex, dateKey) {
   if (habits[habitIndex].completed[dateKey]) {
     delete habits[habitIndex].completed[dateKey];
   } else {
-    habits[habitIndex].completed[dateKey] = true;
+    habits[habitIndex].completed[dateKey] = 1;
   }
   dataIsDirty = true;
   renderHabits();
