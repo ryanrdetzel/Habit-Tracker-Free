@@ -99,12 +99,11 @@ function renderHabits(doneCallback = null) {
       const date = new Date(startDate);
       date.setDate(startDate.getDate() + i);
       const dateKey = formatDateToYMD(date);
-      const checked = habit.completed[dateKey];
-
+      const checked = Boolean(habit.completed[dateKey]);
       cells += `
                   <td class="text-center">
                       <div class="w-10 h-10 border-0 border-gray-400 bg-gray-50 mx-auto ${
-                        checked ? color : ""
+                        checked ? color : "bg-gray-100"
                       }"
                            onclick="toggleHabit(${habits.indexOf(
                              habit
@@ -199,6 +198,7 @@ async function saveHabits() {
       console.error("Failed to save habits:", response.statusText);
     } else {
       dataIsDirty = false;
+      hideInstructions();
     }
   } catch (error) {
     console.error("Error saving habits:", error);
@@ -225,11 +225,19 @@ async function fetchHabits() {
     if (response.ok) {
       habits = await response.json();
       renderHabits(scrollAllTheWayRight);
+      hideInstructions();
     } else {
       console.error("Failed to fetch habits:", response.statusText);
     }
   } catch (error) {
     console.error("Error fetching habits:", error);
+  }
+}
+
+function hideInstructions() {
+  // Hide instructions if there is only one habit in the habit list and it's empty
+  if (habits.length > 2) {
+    document.getElementById("instructions").classList.add("hidden");
   }
 }
 

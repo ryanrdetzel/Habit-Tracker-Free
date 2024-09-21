@@ -12,12 +12,14 @@ export async function onRequest(context) {
   const content = await context.env.DB.get(key);
 
   if (!content) {
+    const today = new Date();
+    const formattedDate = today.toISOString().split("T")[0].replace(/-/g, "");
     return new Response(
       JSON.stringify([
         {
           name: "Drink Water Daily",
           color: "blue",
-          completed: { 20240921: 1 },
+          completed: { [formattedDate]: 1 },
         },
       ]),
       { status: 200, headers: { "Content-Type": "application/json" } }

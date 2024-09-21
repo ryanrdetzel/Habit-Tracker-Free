@@ -1,5 +1,5 @@
 module.exports = {
-  content: ["./*.html"],
+  content: ["./*.html", "./scripts.js"],
   theme: {
     extend: {
       colors: {
@@ -27,5 +27,6 @@ module.exports = {
     "bg-habit-charcoal",
     "bg-habit-orange",
     "bg-habit-turquoise",
+    "bg-gray-500",
   ],
 };
