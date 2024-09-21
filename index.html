@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Habit Tracker</title>
+    <link href="styles.css" rel="stylesheet" />
+    <script src="scripts.js" defer></script>
+  </head>
+  <body class="bg-gray-100 p-4">
+    <div class="max-w-full mx-auto">
+      <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold text-gray-800">HABITS</h1>
+        <button
+          id="newHabitBtn"
+          class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+        >
+          + new habit
+        </button>
+      </div>
+
+      <div class="bg-white shadow-sm rounded-sm overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full" id="habitTable">
+            <thead>
+              <tr
+                class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal"
+                id="dateHeaders"
+              >
+                <th class="py-3 px-6 text-left sticky left-0 bg-gray-200">
+                  Habit
+                </th>
+              </tr>
+            </thead>
+            <tbody id="habitList">
+              <!-- Habits will be added here dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="fixed bottom-0 left-0 w-full bg-gray-100 py-2 text-center">
+        <input
+          type="text"
+          id="saveKey"
+          class="w-full bg-gray-100 p-2 text-center"
+        />
+      </div>
+      <!-- Modal -->
+      <div
+        id="habitModal"
+        class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden"
+      >
+        <div
+          class="bg-white rounded-lg shadow-lg w-11/12 sm:w-2/3 md:w-1/2 lg:w-1/3 p-4 sm:p-6"
+        >
+          <h2 class="text-xl font-semibold mb-4">Edit Habit</h2>
+          <input
+            id="habitInput"
+            type="text"
+            class="border border-gray-300 rounded-md w-full p-2 mb-4"
+          />
+
+          <div class="flex justify-between space-x-4 mb-4">
+            <button
+              id="cancelButton"
+              class="bg-gray-500 text-white px-4 py-2 rounded-md w-1/2"
+            >
+              Cancel
+            </button>
+            <button
+              id="saveButton"
+              class="bg-green-500 text-white px-4 py-2 rounded-md w-1/2"
+            >
+              Save
+            </button>
+          </div>
+
+          <hr class="mb-4" />
+
+          <button
+            id="deleteButton"
+            class="bg-red-500 text-white px-4 py-2 rounded-md w-full"
+          >
+            Delete Habit
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
