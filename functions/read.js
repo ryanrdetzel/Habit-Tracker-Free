@@ -14,7 +14,11 @@ export async function onRequest(context) {
   if (!content) {
     return new Response(
       JSON.stringify([
-        { name: "Drink 2 Glasses Of Water", color: "blue", completed: {} },
+        {
+          name: "Drink Water Daily",
+          color: "blue",
+          completed: { 20240921: 1 },
+        },
       ]),
       { status: 200, headers: { "Content-Type": "application/json" } }
     );
